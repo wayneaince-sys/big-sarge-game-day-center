@@ -3,12 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Sarge Game Day Center</title>
+    <meta name="description" content="Big Sarge Game Day Center - NFL Teams Directory and Playoff Projections for the 2025 Season">
+    <meta name="keywords" content="NFL, Football, Teams, Playoffs, 2025, Big Sarge, Game Day">
+    <meta name="author" content="Big Sarge Game Day Center">
+    
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="Big Sarge Game Day Center - NFL 2025">
+    <meta property="og:description" content="Complete NFL teams directory with Week 1 playoff projections for the 2025 season">
+    <meta property="og:type" content="website">
+    
+    <title>Big Sarge Game Day Center - NFL Teams Directory 2025</title>
+    
     <style>
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -16,8 +31,10 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            line-height: 1.6;
         }
         
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -27,6 +44,7 @@
             overflow: hidden;
         }
         
+        /* Header Section */
         .header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
@@ -45,156 +63,31 @@
             opacity: 0.95;
         }
         
+        /* Navigation */
+        .nav {
+            background: #2a5298;
+            padding: 15px 40px;
+            text-align: center;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Content Area */
         .content {
             padding: 40px;
         }
         
-        .primetime-section {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            color: white;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .primetime-title {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            color: #FFD700;
-            text-align: center;
-        }
-        
-        .primetime-games {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-        }
-        
-        .primetime-game {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #FFD700;
-        }
-        
-        .game-time {
-            font-size: 0.9rem;
-            color: #FFD700;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .game-matchup {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        .game-network {
-            font-size: 0.85rem;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-        
-        .standings-overview {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            border: 2px solid #e0e0e0;
-        }
-        
-        .standings-title {
-            font-size: 1.5rem;
-            color: #1e3c72;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .division-standings {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .division-leader {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #28a745;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .division-name {
-            font-weight: 600;
-            color: #2a5298;
-            margin-bottom: 8px;
-        }
-        
-        .leader-info {
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        .record-badge {
-            display: inline-block;
-            background: #28a745;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        
-        .playoff-picture {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .playoff-title {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            color: #FFD700;
-            text-align: center;
-        }
-        
-        .playoff-conferences {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        
-        .playoff-conference {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        
-        .playoff-conference h3 {
-            color: #FFD700;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .playoff-seed {
-            background: rgba(255,255,255,0.1);
-            padding: 8px 12px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            border-left: 3px solid #FFD700;
-        }
-        
-        .seed-number {
-            color: #FFD700;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-        
+        /* Conference Sections */
         .conference {
             margin-bottom: 40px;
         }
@@ -207,6 +100,7 @@
             border-bottom: 3px solid #e0e0e0;
         }
         
+        /* Division Sections */
         .division {
             margin-bottom: 30px;
         }
@@ -218,12 +112,14 @@
             font-weight: 600;
         }
         
+        /* Teams Grid Layout */
         .teams-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
         }
         
+        /* Team Links */
         .team-link {
             display: flex;
             align-items: center;
@@ -245,34 +141,73 @@
             box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
         }
         
+        /* Team Logo Badge */
         .team-logo {
             width: 40px;
             height: 40px;
             margin-right: 15px;
+            background: #ddd;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 12px;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            color: #666;
+            font-size: 14px;
         }
         
-        .team-info {
-            flex-grow: 1;
+        /* Playoff Picture Section */
+        .playoff-picture {
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
         }
         
-        .team-name {
-            font-weight: 600;
-            margin-bottom: 2px;
+        .playoff-title {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
         }
         
-        .team-details {
-            font-size: 0.85rem;
-            opacity: 0.7;
+        .playoff-conferences {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
+        .playoff-conference {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .playoff-conference h3 {
+            color: #2a5298;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .playoff-seed {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.95rem;
+        }
+        
+        .playoff-seed:last-child {
+            border-bottom: none;
+        }
+        
+        .seed-number {
+            font-weight: bold;
+            color: #1e3c72;
+            margin-right: 10px;
+        }
+        
+        /* Footer */
         .footer {
             text-align: center;
             padding: 20px;
@@ -281,6 +216,16 @@
             font-size: 0.9rem;
         }
         
+        .footer a {
+            color: #2a5298;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
             .teams-grid {
                 grid-template-columns: 1fr;
@@ -293,109 +238,147 @@
             .playoff-conferences {
                 grid-template-columns: 1fr;
             }
+            
+            .nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .nav {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <div class="header">
             <h1>🏈 Big Sarge Game Day Center</h1>
-            <p>2025 Season - Team colors, key players & Week 2 matchups</p>
+            <p>2025 NFL Season - Your Complete Teams Directory & Playoff Tracker</p>
         </div>
         
+        <!-- Navigation -->
+        <div class="nav">
+            <a href="#afc">AFC Teams</a>
+            <a href="#playoffs">Playoff Picture</a>
+            <a href="#nfc">NFC Teams</a>
+        </div>
+        
+        <!-- Main Content -->
         <div class="content">
-            <!-- Primetime Games Section -->
-            <div class="primetime-section">
-                <h2 class="primetime-title">⭐ WEEK 2 PRIMETIME COMMAND SCHEDULE ⭐</h2>
-                <div class="primetime-games">
-                    <div class="primetime-game">
-                        <div class="game-time">THU • Sept 11 • 8:15 PM ET</div>
-                        <div class="game-matchup">Washington @ Green Bay</div>
-                        <div class="game-network">Amazon Prime Video</div>
-                    </div>
-                    <div class="primetime-game">
-                        <div class="game-time">SUN • Sept 14 • 8:20 PM ET</div>
-                        <div class="game-matchup">Atlanta @ Minnesota</div>
-                        <div class="game-network">NBC • Sunday Night Football</div>
-                    </div>
-                    <div class="primetime-game">
-                        <div class="game-time">MON • Sept 15 • 7:00 PM ET</div>
-                        <div class="game-matchup">Tampa Bay @ Houston</div>
-                        <div class="game-network">ABC/ESPN • MNF Game 1</div>
-                    </div>
-                    <div class="primetime-game">
-                        <div class="game-time">MON • Sept 15 • 10:00 PM ET</div>
-                        <div class="game-matchup">LA Chargers @ Las Vegas</div>
-                        <div class="game-network">ESPN • MNF Game 2</div>
+            <!-- AFC Conference -->
+            <div class="conference" id="afc">
+                <h2 class="conference-title">American Football Conference (AFC)</h2>
+                
+                <!-- AFC East -->
+                <div class="division">
+                    <h3 class="division-title">AFC East</h3>
+                    <div class="teams-grid">
+                        <a href="https://www.nfl.com/teams/buffalo-bills/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">BUF</span>
+                            Buffalo Bills
+                        </a>
+                        <a href="https://www.nfl.com/teams/miami-dolphins/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">MIA</span>
+                            Miami Dolphins
+                        </a>
+                        <a href="https://www.nfl.com/teams/new-england-patriots/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">NE</span>
+                            New England Patriots
+                        </a>
+                        <a href="https://www.nfl.com/teams/new-york-jets/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">NYJ</span>
+                            New York Jets
+                        </a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Division Leaders & Standings -->
-            <div class="standings-overview">
-                <h2 class="standings-title">🏆 DIVISION INTEL REPORT - WEEK 1 RESULTS</h2>
-                <div class="division-standings">
-                    <div class="division-leader">
-                        <div class="division-name">AFC East Leaders</div>
-                        <div class="leader-info">
-                            Buffalo Bills <span class="record-badge">1-0</span><br>
-                            <small>Beat Baltimore 41-40 • Next: vs Miami</small>
-                        </div>
+                
+                <!-- AFC North -->
+                <div class="division">
+                    <h3 class="division-title">AFC North</h3>
+                    <div class="teams-grid">
+                        <a href="https://www.nfl.com/teams/baltimore-ravens/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">BAL</span>
+                            Baltimore Ravens
+                        </a>
+                        <a href="https://www.nfl.com/teams/cincinnati-bengals/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">CIN</span>
+                            Cincinnati Bengals
+                        </a>
+                        <a href="https://www.nfl.com/teams/cleveland-browns/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">CLE</span>
+                            Cleveland Browns
+                        </a>
+                        <a href="https://www.nfl.com/teams/pittsburgh-steelers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">PIT</span>
+                            Pittsburgh Steelers
+                        </a>
                     </div>
-                    <div class="division-leader">
-                        <div class="division-name">AFC North Leaders</div>
-                        <div class="leader-info">
-                            Cincinnati Bengals <span class="record-badge">1-0</span><br>
-                            <small>Beat Cleveland 17-16 • Next: @ Kansas City</small>
-                        </div>
+                </div>
+                
+                <!-- AFC South -->
+                <div class="division">
+                    <h3 class="division-title">AFC South</h3>
+                    <div class="teams-grid">
+                        <a href="https://www.nfl.com/teams/houston-texans/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">HOU</span>
+                            Houston Texans
+                        </a>
+                        <a href="https://www.nfl.com/teams/indianapolis-colts/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">IND</span>
+                            Indianapolis Colts
+                        </a>
+                        <a href="https://www.nfl.com/teams/jacksonville-jaguars/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">JAX</span>
+                            Jacksonville Jaguars
+                        </a>
+                        <a href="https://www.nfl.com/teams/tennessee-titans/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">TEN</span>
+                            Tennessee Titans
+                        </a>
                     </div>
-                    <div class="division-leader">
-                        <div class="division-name">AFC South Leaders</div>
-                        <div class="leader-info">
-                            Jacksonville Jaguars <span class="record-badge">1-0</span><br>
-                            <small>Beat Carolina 26-13 • Next: @ Cincinnati</small>
-                        </div>
-                    </div>
-                    <div class="division-leader">
-                        <div class="division-name">AFC West Leaders</div>
-                        <div class="leader-info">
-                            LA Chargers <span class="record-badge">1-0</span><br>
-                            <small>Beat Kansas City 27-21 • Next: @ Las Vegas</small>
-                        </div>
-                    </div>
-                    <div class="division-leader">
-                        <div class="division-name">NFC East Leaders</div>
-                        <div class="leader-info">
-                            Philadelphia Eagles <span class="record-badge">1-0</span><br>
-                            <small>Beat Dallas 24-20 • Next: vs Atlanta</small>
-                        </div>
-                    </div>
-                    <div class="division-leader">
-                        <div class="division-name">NFC North Leaders</div>
-                        <div class="leader-info">
-                            Minnesota Vikings <span class="record-badge">1-0</span><br>
-                            <small>Beat Chicago 27-24 • Next: vs Atlanta</small>
-                        </div>
-                    </div>
-                    <div class="division-leader">
-                        <div class="division-name">NFC South Leaders</div>
-                        <div class="leader-info">
-                            Tampa Bay Buccaneers <span class="record-badge">1-0</span><br>
-                            <small>Beat Atlanta 23-20 • Next: @ Houston</small>
-                        </div>
-                    </div>
-                    <div class="division-leader">
-                        <div class="division-name">NFC West Leaders</div>
-                        <div class="leader-info">
-                            San Francisco 49ers <span class="record-badge">1-0</span><br>
-                            <small>Beat Seattle 24-17 • Next: @ New Orleans</small>
-                        </div>
+                </div>
+                
+                <!-- AFC West -->
+                <div class="division">
+                    <h3 class="division-title">AFC West</h3>
+                    <div class="teams-grid">
+                        <a href="https://www.nfl.com/teams/denver-broncos/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">DEN</span>
+                            Denver Broncos
+                        </a>
+                        <a href="https://www.nfl.com/teams/kansas-city-chiefs/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">KC</span>
+                            Kansas City Chiefs
+                        </a>
+                        <a href="https://www.nfl.com/teams/las-vegas-raiders/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">LV</span>
+                            Las Vegas Raiders
+                        </a>
+                        <a href="https://www.nfl.com/teams/los-angeles-chargers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">LAC</span>
+                            Los Angeles Chargers
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Playoff Picture Projection -->
-            <div class="playoff-picture">
+            <div class="playoff-picture" id="playoffs">
                 <h2 class="playoff-title">🏈 WEEK 1 PLAYOFF PICTURE INTEL 🏈</h2>
                 <div class="playoff-conferences">
                     <div class="playoff-conference">
@@ -449,187 +432,29 @@
                 </div>
             </div>
 
-            <!-- Full Team Directory -->
-            <!-- AFC Conference -->
-            <div class="conference">
-                <h2 class="conference-title">American Football Conference (AFC)</h2>
-                
-                <!-- AFC East -->
-                <div class="division">
-                    <h3 class="division-title">AFC East</h3>
-                    <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/buffalo-bills/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #00338D;">BUF</span>
-                            <div class="team-info">
-                                <div class="team-name">Buffalo Bills</div>
-                                <div class="team-details">QB: Josh Allen • vs MIA (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/miami-dolphins/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #008E97;">MIA</span>
-                            <div class="team-info">
-                                <div class="team-name">Miami Dolphins</div>
-                                <div class="team-details">QB: Tua Tagovailoa • @ BUF (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/new-england-patriots/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #002244;">NE</span>
-                            <div class="team-info">
-                                <div class="team-name">New England Patriots</div>
-                                <div class="team-details">HC: Mike Vrabel • vs SEA (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/new-york-jets/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #125740;">NYJ</span>
-                            <div class="team-info">
-                                <div class="team-name">New York Jets</div>
-                                <div class="team-details">QB: Aaron Rodgers • vs TEN (Week 2)</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- AFC North -->
-                <div class="division">
-                    <h3 class="division-title">AFC North</h3>
-                    <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/baltimore-ravens/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #241773;">BAL</span>
-                            <div class="team-info">
-                                <div class="team-name">Baltimore Ravens</div>
-                                <div class="team-details">QB: Lamar Jackson • vs LV (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/cincinnati-bengals/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #FB4F14;">CIN</span>
-                            <div class="team-info">
-                                <div class="team-name">Cincinnati Bengals</div>
-                                <div class="team-details">QB: Joe Burrow • @ KC (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/cleveland-browns/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #311D00;">CLE</span>
-                            <div class="team-info">
-                                <div class="team-name">Cleveland Browns</div>
-                                <div class="team-details">QB: Deshaun Watson • vs JAX (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/pittsburgh-steelers/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #FFB612;">PIT</span>
-                            <div class="team-info">
-                                <div class="team-name">Pittsburgh Steelers</div>
-                                <div class="team-details">QB: Aaron Rodgers • vs SEA (Week 2)</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- AFC South -->
-                <div class="division">
-                    <h3 class="division-title">AFC South</h3>
-                    <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/houston-texans/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #03202F;">HOU</span>
-                            <div class="team-info">
-                                <div class="team-name">Houston Texans</div>
-                                <div class="team-details">QB: C.J. Stroud • vs CHI (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/indianapolis-colts/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #002C5F;">IND</span>
-                            <div class="team-info">
-                                <div class="team-name">Indianapolis Colts</div>
-                                <div class="team-details">QB: Daniel Jones • @ GB (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/jacksonville-jaguars/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #006778;">JAX</span>
-                            <div class="team-info">
-                                <div class="team-name">Jacksonville Jaguars</div>
-                                <div class="team-details">QB: Trevor Lawrence • @ CLE (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/tennessee-titans/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #0C2340;">TEN</span>
-                            <div class="team-info">
-                                <div class="team-name">Tennessee Titans</div>
-                                <div class="team-details">QB: Cam Ward • @ NYJ (Week 2)</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- AFC West -->
-                <div class="division">
-                    <h3 class="division-title">AFC West</h3>
-                    <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/denver-broncos/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #FB4F14;">DEN</span>
-                            <div class="team-info">
-                                <div class="team-name">Denver Broncos</div>
-                                <div class="team-details">QB: Bo Nix • vs PIT (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/kansas-city-chiefs/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #E31837;">KC</span>
-                            <div class="team-info">
-                                <div class="team-name">Kansas City Chiefs</div>
-                                <div class="team-details">QB: Patrick Mahomes • vs CIN (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/las-vegas-raiders/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #000000;">LV</span>
-                            <div class="team-info">
-                                <div class="team-name">Las Vegas Raiders</div>
-                                <div class="team-details">QB: Geno Smith • @ BAL (Week 2)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.nfl.com/teams/los-angeles-chargers/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #0080C6;">LAC</span>
-                            <div class="team-info">
-                                <div class="team-name">Los Angeles Chargers</div>
-                                <div class="team-details">QB: Justin Herbert • vs CAR (Week 2)</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
             <!-- NFC Conference -->
-            <div class="conference">
+            <div class="conference" id="nfc">
                 <h2 class="conference-title">National Football Conference (NFC)</h2>
                 
                 <!-- NFC East -->
                 <div class="division">
                     <h3 class="division-title">NFC East</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/dallas-cowboys/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #003594;">DAL</span>
-                            <div class="team-info">
-                                <div class="team-name">Dallas Cowboys</div>
-                                <div class="team-details">QB: Dak Prescott • vs NO (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/dallas-cowboys/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">DAL</span>
+                            Dallas Cowboys
                         </a>
-                        <a href="https://www.nfl.com/teams/new-york-giants/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #0B2265;">NYG</span>
-                            <div class="team-info">
-                                <div class="team-name">New York Giants</div>
-                                <div class="team-details">QB: Jaxson Dart • @ MIN (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/new-york-giants/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">NYG</span>
+                            New York Giants
                         </a>
-                        <a href="https://www.nfl.com/teams/philadelphia-eagles/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #004C54;">PHI</span>
-                            <div class="team-info">
-                                <div class="team-name">Philadelphia Eagles</div>
-                                <div class="team-details">QB: Jalen Hurts • vs ATL (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/philadelphia-eagles/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">PHI</span>
+                            Philadelphia Eagles
                         </a>
-                        <a href="https://www.nfl.com/teams/washington-commanders/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #5A1414;">WAS</span>
-                            <div class="team-info">
-                                <div class="team-name">Washington Commanders</div>
-                                <div class="team-details">QB: Jayden Daniels • vs TB (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/washington-commanders/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">WAS</span>
+                            Washington Commanders
                         </a>
                     </div>
                 </div>
@@ -638,33 +463,21 @@
                 <div class="division">
                     <h3 class="division-title">NFC North</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/chicago-bears/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #0B162A;">CHI</span>
-                            <div class="team-info">
-                                <div class="team-name">Chicago Bears</div>
-                                <div class="team-details">QB: Caleb Williams • @ HOU (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/chicago-bears/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">CHI</span>
+                            Chicago Bears
                         </a>
-                        <a href="https://www.nfl.com/teams/detroit-lions/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #0076B6;">DET</span>
-                            <div class="team-info">
-                                <div class="team-name">Detroit Lions</div>
-                                <div class="team-details">QB: Jared Goff • vs ARI (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/detroit-lions/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">DET</span>
+                            Detroit Lions
                         </a>
-                        <a href="https://www.nfl.com/teams/green-bay-packers/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #203731;">GB</span>
-                            <div class="team-info">
-                                <div class="team-name">Green Bay Packers</div>
-                                <div class="team-details">QB: Jordan Love • vs IND (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/green-bay-packers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">GB</span>
+                            Green Bay Packers
                         </a>
-                        <a href="https://www.nfl.com/teams/minnesota-vikings/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #4F2683;">MIN</span>
-                            <div class="team-info">
-                                <div class="team-name">Minnesota Vikings</div>
-                                <div class="team-details">QB: Sam Darnold • vs NYG (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/minnesota-vikings/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">MIN</span>
+                            Minnesota Vikings
                         </a>
                     </div>
                 </div>
@@ -673,33 +486,21 @@
                 <div class="division">
                     <h3 class="division-title">NFC South</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/atlanta-falcons/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #A71930;">ATL</span>
-                            <div class="team-info">
-                                <div class="team-name">Atlanta Falcons</div>
-                                <div class="team-details">QB: Kirk Cousins • @ PHI (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/atlanta-falcons/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">ATL</span>
+                            Atlanta Falcons
                         </a>
-                        <a href="https://www.nfl.com/teams/carolina-panthers/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #0085CA;">CAR</span>
-                            <div class="team-info">
-                                <div class="team-name">Carolina Panthers</div>
-                                <div class="team-details">QB: Bryce Young • @ LAC (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/carolina-panthers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">CAR</span>
+                            Carolina Panthers
                         </a>
-                        <a href="https://www.nfl.com/teams/new-orleans-saints/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #D3BC8D;">NO</span>
-                            <div class="team-info">
-                                <div class="team-name">New Orleans Saints</div>
-                                <div class="team-details">QB: Tyler Shough • @ DAL (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/new-orleans-saints/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">NO</span>
+                            New Orleans Saints
                         </a>
-                        <a href="https://www.nfl.com/teams/tampa-bay-buccaneers/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #D50A0A;">TB</span>
-                            <div class="team-info">
-                                <div class="team-name">Tampa Bay Buccaneers</div>
-                                <div class="team-details">QB: Baker Mayfield • @ WAS (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/tampa-bay-buccaneers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">TB</span>
+                            Tampa Bay Buccaneers
                         </a>
                     </div>
                 </div>
@@ -708,41 +509,31 @@
                 <div class="division">
                     <h3 class="division-title">NFC West</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/arizona-cardinals/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #97233F;">ARI</span>
-                            <div class="team-info">
-                                <div class="team-name">Arizona Cardinals</div>
-                                <div class="team-details">QB: Kyler Murray • @ DET (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/arizona-cardinals/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">ARI</span>
+                            Arizona Cardinals
                         </a>
-                        <a href="https://www.nfl.com/teams/los-angeles-rams/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #003594;">LAR</span>
-                            <div class="team-info">
-                                <div class="team-name">Los Angeles Rams</div>
-                                <div class="team-details">QB: Matthew Stafford • vs SF (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/los-angeles-rams/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">LAR</span>
+                            Los Angeles Rams
                         </a>
-                        <a href="https://www.nfl.com/teams/san-francisco-49ers/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #AA0000;">SF</span>
-                            <div class="team-info">
-                                <div class="team-name">San Francisco 49ers</div>
-                                <div class="team-details">QB: Brock Purdy • @ LAR (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/san-francisco-49ers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">SF</span>
+                            San Francisco 49ers
                         </a>
-                        <a href="https://www.nfl.com/teams/seattle-seahawks/" target="_blank" class="team-link">
-                            <span class="team-logo" style="background: #002244;">SEA</span>
-                            <div class="team-info">
-                                <div class="team-name">Seattle Seahawks</div>
-                                <div class="team-details">QB: Geno Smith • @ NE (Week 2)</div>
-                            </div>
+                        <a href="https://www.nfl.com/teams/seattle-seahawks/" target="_blank" rel="noopener noreferrer" class="team-link">
+                            <span class="team-logo">SEA</span>
+                            Seattle Seahawks
                         </a>
                     </div>
                 </div>
             </div>
         </div>
         
+        <!-- Footer -->
         <div class="footer">
             <p>© 2025 Big Sarge Game Day Center | All team names and logos are property of the National Football League</p>
+            <p>Built with HTML & CSS | <a href="https://github.com" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
         </div>
     </div>
 </body>
