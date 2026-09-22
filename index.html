@@ -1,540 +1,810 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Big Sarge Game Day Center - NFL Teams Directory and Playoff Projections for the 2025 Season">
-    <meta name="keywords" content="NFL, Football, Teams, Playoffs, 2025, Big Sarge, Game Day">
-    <meta name="author" content="Big Sarge Game Day Center">
-    
-    <!-- Open Graph Meta Tags for Social Media Sharing -->
-    <meta property="og:title" content="Big Sarge Game Day Center - NFL 2025">
-    <meta property="og:description" content="Complete NFL teams directory with Week 1 playoff projections for the 2025 season">
-    <meta property="og:type" content="website">
-    
-    <title>Big Sarge Game Day Center - NFL Teams Directory 2025</title>
-    
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        
-        /* Header Section */
-        .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-        }
-        
-        /* Navigation */
-        .nav {
-            background: #2a5298;
-            padding: 15px 40px;
-            text-align: center;
-        }
-        
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-        
-        .nav a:hover {
-            opacity: 0.8;
-        }
-        
-        /* Content Area */
-        .content {
-            padding: 40px;
-        }
-        
-        /* Conference Sections */
-        .conference {
-            margin-bottom: 40px;
-        }
-        
-        .conference-title {
-            font-size: 1.8rem;
-            color: #1e3c72;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #e0e0e0;
-        }
-        
-        /* Division Sections */
-        .division {
-            margin-bottom: 30px;
-        }
-        
-        .division-title {
-            font-size: 1.3rem;
-            color: #2a5298;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        /* Teams Grid Layout */
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        /* Team Links */
-        .team-link {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .team-link:hover {
-            background: #e3f2fd;
-            color: #1976d2;
-            border-color: #1976d2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
-        }
-        
-        /* Team Logo Badge */
-        .team-logo {
-            width: 40px;
-            height: 40px;
-            margin-right: 15px;
-            background: #ddd;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #666;
-            font-size: 14px;
-        }
-        
-        /* Playoff Picture Section */
-        .playoff-picture {
-            margin: 40px 0;
-            padding: 30px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 15px;
-        }
-        
-        .playoff-title {
-            font-size: 1.8rem;
-            color: #1e3c72;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        .playoff-conferences {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .playoff-conference {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .playoff-conference h3 {
-            color: #2a5298;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .playoff-seed {
-            padding: 8px 0;
-            border-bottom: 1px solid #e0e0e0;
-            font-size: 0.95rem;
-        }
-        
-        .playoff-seed:last-child {
-            border-bottom: none;
-        }
-        
-        .seed-number {
-            font-weight: bold;
-            color: #1e3c72;
-            margin-right: 10px;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: #f8f9fa;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .footer a {
-            color: #2a5298;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .teams-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .playoff-conferences {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav a {
-                display: block;
-                margin: 10px 0;
-            }
-        }
-        
-        /* Print Styles */
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            
-            .container {
-                box-shadow: none;
-                border-radius: 0;
-            }
-            
-            .nav {
-                display: none;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Big Sarge Game Day Center - the complete NFL 2026 schedule, all 18 weeks and 272 games, plus live standings and playoff picture.">
+<meta name="keywords" content="NFL, NFL 2026 schedule, football schedule, NFL standings, playoff picture, Big Sarge, Game Day Center">
+<meta name="author" content="Big Sarge Game Day Center">
+
+<meta property="og:title" content="Big Sarge Game Day Center - NFL 2026 Schedule">
+<meta property="og:description" content="Every NFL 2026 game, week by week: kickoff times, scores, standings and the playoff picture.">
+<meta property="og:type" content="website">
+
+<title>Big Sarge Game Day Center - NFL 2026 Schedule</title>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+    color: #1f2430;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+.header h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+.header p { font-size: 1.1rem; opacity: 0.95; }
+
+.nav {
+    background: #2a5298;
+    padding: 15px 40px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+.nav a {
+    color: white; text-decoration: none; margin: 0 15px;
+    font-weight: 500; transition: opacity 0.3s;
+    display: inline-block;
+}
+.nav a:hover { opacity: 0.8; }
+.nav a:focus-visible { outline: 2px solid #ffd166; outline-offset: 3px; border-radius: 3px; }
+
+.content { padding: 40px; }
+
+/* Season status strip */
+.season-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
+}
+.stat {
+    background: #f4f6fb;
+    border: 1px solid #e1e6f0;
+    border-left: 4px solid #2a5298;
+    border-radius: 10px;
+    padding: 15px 18px;
+}
+.stat .label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: #5a6478; font-weight: 600;
+}
+.stat .value { font-size: 1.5rem; font-weight: 700; color: #1e3c72; line-height: 1.2; }
+.stat .sub { font-size: 0.85rem; color: #5a6478; }
+
+/* Section headings */
+.section { margin-bottom: 50px; scroll-margin-top: 70px; }
+.section-title {
+    font-size: 1.8rem; color: #1e3c72; margin-bottom: 8px;
+    padding-bottom: 10px; border-bottom: 3px solid #e0e0e0;
+}
+.section-note { color: #5a6478; font-size: 0.92rem; margin-bottom: 25px; }
+
+/* Week selector */
+.week-tabs {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;
+}
+.week-tab {
+    font: inherit; font-weight: 600; font-size: 0.9rem;
+    padding: 8px 14px; border-radius: 8px; cursor: pointer;
+    background: #eef1f8; color: #2a5298;
+    border: 1px solid #d8dfee;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+.week-tab:hover { background: #dde4f5; }
+.week-tab:focus-visible { outline: 2px solid #1e3c72; outline-offset: 2px; }
+.week-tab[aria-selected="true"] {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white; border-color: #1e3c72;
+}
+.week-tab .dot {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: #2ecc71; margin-left: 6px; vertical-align: middle;
+}
+.week-tab[aria-selected="true"] .dot { background: #ffd166; }
+
+.week-head {
+    display: flex; flex-wrap: wrap; align-items: baseline;
+    gap: 12px; margin: 25px 0 15px;
+}
+.week-head h3 { font-size: 1.35rem; color: #1e3c72; }
+.week-head .dates { color: #5a6478; font-size: 0.95rem; }
+
+/* Game day groups */
+.day-group { margin-bottom: 22px; }
+.day-label {
+    font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #5a6478;
+    padding-bottom: 6px; margin-bottom: 10px;
+    border-bottom: 1px solid #e8ecf5;
+}
+.game-list { display: grid; gap: 8px; }
+
+.game {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: #f9fafd;
+    border: 1px solid #e8ecf5;
+    border-radius: 10px;
+    transition: background 0.2s, border-color 0.2s;
+}
+.game:hover { background: #f2f5fc; border-color: #c9d4ea; }
+.game.final { background: #fbfbfc; }
+
+.game-time { font-size: 0.85rem; color: #5a6478; font-weight: 600; }
+.game-time .final-tag { color: #1e3c72; }
+
+.matchup { display: flex; flex-direction: column; gap: 2px; }
+.side { display: flex; align-items: center; gap: 8px; }
+.side .abbr {
+    display: inline-block; min-width: 42px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+    color: white; background: #2a5298;
+    padding: 2px 6px; border-radius: 4px; text-align: center;
+}
+.side .full { font-size: 0.95rem; }
+.side .score {
+    margin-left: auto; font-size: 1.05rem; font-weight: 700;
+    color: #8a93a8; font-variant-numeric: tabular-nums;
+}
+.side.win .full { font-weight: 700; color: #14532d; }
+.side.win .score { color: #14532d; }
+.side.win .abbr { background: #14532d; }
+
+.tags { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.tag {
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; padding: 3px 8px; border-radius: 20px;
+    white-space: nowrap;
+}
+.tag.tnf { background: #e8e2fb; color: #4c2f9c; }
+.tag.mnf { background: #fde6cf; color: #8a4b08; }
+.tag.sat { background: #d9f0ff; color: #0b4f75; }
+.tag.intl { background: #d7f5e3; color: #0f5132; }
+.tag.div { background: #f1f3f8; color: #4a5568; }
+.venue { font-size: 0.75rem; color: #5a6478; }
+
+.week-note {
+    margin-bottom: 18px; padding: 12px 16px;
+    background: #fff8e6; border: 1px solid #f0dca8;
+    border-left: 4px solid #d99a00;
+    border-radius: 10px; font-size: 0.88rem; color: #6b4e00;
+}
+.game-time.tbd { color: #8a93a8; font-style: italic; font-weight: 500; }
+
+.byes {
+    margin-top: 14px; padding: 12px 16px;
+    background: #f4f6fb; border: 1px dashed #c9d4ea;
+    border-radius: 10px; font-size: 0.9rem; color: #3d4757;
+}
+.byes strong { color: #1e3c72; }
+
+/* Standings + playoff picture */
+.two-col {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 30px;
+}
+.panel {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white; border-radius: 15px; padding: 25px;
+}
+.panel h3 {
+    font-size: 1.15rem; margin-bottom: 15px;
+    padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+.seed {
+    display: grid; grid-template-columns: 26px 1fr auto;
+    align-items: center; gap: 10px;
+    padding: 9px 0; font-size: 0.93rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.seed:last-child { border-bottom: none; }
+.seed-number { font-weight: 700; color: #ffd166; }
+.seed .rec { font-variant-numeric: tabular-nums; opacity: 0.9; font-size: 0.85rem; }
+.seed .role { display: block; font-size: 0.75rem; opacity: 0.75; }
+.seed.wc { opacity: 0.93; }
+.cut {
+    margin: 8px 0; border-top: 2px dashed rgba(255,209,102,0.7);
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #ffd166; padding-top: 6px;
+}
+
+/* Teams directory */
+.conference { margin-bottom: 40px; scroll-margin-top: 70px; }
+.conference-title {
+    font-size: 1.8rem; color: #1e3c72; margin-bottom: 25px;
+    padding-bottom: 10px; border-bottom: 3px solid #e0e0e0;
+}
+.division { margin-bottom: 30px; }
+.division-title { font-size: 1.3rem; color: #2a5298; margin-bottom: 15px; font-weight: 600; }
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+.team-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 15px;
+    background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 10px;
+    color: #333; text-decoration: none;
+    transition: all 0.3s;
+}
+.team-link:hover {
+    background: #2a5298; color: white;
+    border-color: #1e3c72; transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(42,82,152,0.3);
+}
+.team-link:focus-visible { outline: 2px solid #1e3c72; outline-offset: 2px; }
+.team-logo {
+    display: inline-block; min-width: 46px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+    color: white; background: #2a5298;
+    padding: 3px 6px; border-radius: 4px; text-align: center;
+}
+.team-link:hover .team-logo { background: #14284f; }
+.team-name { flex: 1; font-size: 0.95rem; }
+.team-record { font-size: 0.85rem; font-weight: 700; color: #5a6478; font-variant-numeric: tabular-nums; }
+.team-link:hover .team-record { color: #e8ecf5; }
+
+.footer {
+    background: #1e3c72; color: white;
+    padding: 25px 40px; text-align: center; font-size: 0.88rem;
+}
+.footer p { margin: 4px 0; opacity: 0.9; }
+.footer a { color: #ffd166; }
+
+@media (max-width: 720px) {
+    body { padding: 10px; }
+    .header { padding: 28px 20px; }
+    .header h1 { font-size: 1.7rem; }
+    .nav { padding: 12px 15px; }
+    .nav a { margin: 0 8px; font-size: 0.9rem; }
+    .content { padding: 22px 15px; }
+    .footer { padding: 20px 15px; }
+    .game { grid-template-columns: 1fr; gap: 8px; }
+    .game-time { order: -1; }
+    .tags { flex-direction: row; align-items: center; flex-wrap: wrap; }
+}
+
+@media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; }
+    .nav, .week-tabs { display: none; }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>🏈 Big Sarge Game Day Center</h1>
-            <p>2025 NFL Season - Your Complete Teams Directory & Playoff Tracker</p>
-        </div>
-        
-        <!-- Navigation -->
-        <div class="nav">
-            <a href="#afc">AFC Teams</a>
-            <a href="#playoffs">Playoff Picture</a>
-            <a href="#nfc">NFC Teams</a>
-        </div>
-        
-        <!-- Main Content -->
-        <div class="content">
-            <!-- AFC Conference -->
-            <div class="conference" id="afc">
-                <h2 class="conference-title">American Football Conference (AFC)</h2>
-                
-                <!-- AFC East -->
+<div class="container">
+
+    <div class="header">
+        <h1>&#127944; Big Sarge Game Day Center</h1>
+        <p>The complete NFL 2026 schedule &mdash; 18 weeks, 272 games, every kickoff</p>
+    </div>
+
+    <nav class="nav">
+        <a href="#schedule">Schedule</a>
+        <a href="#playoffs">Playoff Picture</a>
+        <a href="#afc">AFC</a>
+        <a href="#nfc">NFC</a>
+    </nav>
+
+    <div class="content">
+
+        <div class="season-bar" id="seasonBar"></div>
+
+        <!-- Schedule -->
+        <section class="section" id="schedule">
+            <h2 class="section-title">2026 Regular Season Schedule</h2>
+            <p class="section-note">
+                All 272 games, September 9, 2026 through January 10, 2027. Kickoff times are Eastern
+                and subject to flexible scheduling from Week 5 on.
+                Pick a week &mdash; weeks with completed games are marked with a dot.
+            </p>
+            <div class="week-tabs" id="weekTabs" role="tablist" aria-label="Select week"></div>
+            <div id="weekPanel" role="tabpanel"></div>
+        </section>
+
+        <!-- Playoff picture -->
+        <section class="section" id="playoffs">
+            <h2 class="section-title">&#127944; Playoff Picture</h2>
+            <p class="section-note">
+                Seeded from actual results to date: four division leaders, then the next three teams
+                by record as wild cards. Straight win-percentage order &mdash; the NFL's full
+                head-to-head and common-games tiebreakers are not applied, so treat close seeds as a
+                coin flip. Entertainment only.
+            </p>
+            <div class="two-col" id="playoffPanels"></div>
+        </section>
+
+        <!-- AFC -->
+        <div class="conference" id="afc">
+            <h2 class="conference-title">American Football Conference (AFC)</h2>
                 <div class="division">
                     <h3 class="division-title">AFC East</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/buffalo-bills/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/buffalo-bills/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="BUF">
                             <span class="team-logo">BUF</span>
-                            Buffalo Bills
+                            <span class="team-name">Buffalo Bills</span>
+                            <span class="team-record" data-record="BUF"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/miami-dolphins/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/miami-dolphins/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="MIA">
                             <span class="team-logo">MIA</span>
-                            Miami Dolphins
+                            <span class="team-name">Miami Dolphins</span>
+                            <span class="team-record" data-record="MIA"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/new-england-patriots/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/new-england-patriots/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="NE">
                             <span class="team-logo">NE</span>
-                            New England Patriots
+                            <span class="team-name">New England Patriots</span>
+                            <span class="team-record" data-record="NE"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/new-york-jets/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/new-york-jets/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="NYJ">
                             <span class="team-logo">NYJ</span>
-                            New York Jets
+                            <span class="team-name">New York Jets</span>
+                            <span class="team-record" data-record="NYJ"></span>
                         </a>
                     </div>
                 </div>
-                
-                <!-- AFC North -->
+
                 <div class="division">
                     <h3 class="division-title">AFC North</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/baltimore-ravens/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/baltimore-ravens/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="BAL">
                             <span class="team-logo">BAL</span>
-                            Baltimore Ravens
+                            <span class="team-name">Baltimore Ravens</span>
+                            <span class="team-record" data-record="BAL"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/cincinnati-bengals/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/cincinnati-bengals/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="CIN">
                             <span class="team-logo">CIN</span>
-                            Cincinnati Bengals
+                            <span class="team-name">Cincinnati Bengals</span>
+                            <span class="team-record" data-record="CIN"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/cleveland-browns/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/cleveland-browns/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="CLE">
                             <span class="team-logo">CLE</span>
-                            Cleveland Browns
+                            <span class="team-name">Cleveland Browns</span>
+                            <span class="team-record" data-record="CLE"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/pittsburgh-steelers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/pittsburgh-steelers/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="PIT">
                             <span class="team-logo">PIT</span>
-                            Pittsburgh Steelers
+                            <span class="team-name">Pittsburgh Steelers</span>
+                            <span class="team-record" data-record="PIT"></span>
                         </a>
                     </div>
                 </div>
-                
-                <!-- AFC South -->
+
                 <div class="division">
                     <h3 class="division-title">AFC South</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/houston-texans/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/houston-texans/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="HOU">
                             <span class="team-logo">HOU</span>
-                            Houston Texans
+                            <span class="team-name">Houston Texans</span>
+                            <span class="team-record" data-record="HOU"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/indianapolis-colts/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/indianapolis-colts/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="IND">
                             <span class="team-logo">IND</span>
-                            Indianapolis Colts
+                            <span class="team-name">Indianapolis Colts</span>
+                            <span class="team-record" data-record="IND"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/jacksonville-jaguars/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/jacksonville-jaguars/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="JAX">
                             <span class="team-logo">JAX</span>
-                            Jacksonville Jaguars
+                            <span class="team-name">Jacksonville Jaguars</span>
+                            <span class="team-record" data-record="JAX"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/tennessee-titans/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/tennessee-titans/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="TEN">
                             <span class="team-logo">TEN</span>
-                            Tennessee Titans
+                            <span class="team-name">Tennessee Titans</span>
+                            <span class="team-record" data-record="TEN"></span>
                         </a>
                     </div>
                 </div>
-                
-                <!-- AFC West -->
+
                 <div class="division">
                     <h3 class="division-title">AFC West</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/denver-broncos/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/denver-broncos/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="DEN">
                             <span class="team-logo">DEN</span>
-                            Denver Broncos
+                            <span class="team-name">Denver Broncos</span>
+                            <span class="team-record" data-record="DEN"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/kansas-city-chiefs/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/kansas-city-chiefs/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="KC">
                             <span class="team-logo">KC</span>
-                            Kansas City Chiefs
+                            <span class="team-name">Kansas City Chiefs</span>
+                            <span class="team-record" data-record="KC"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/las-vegas-raiders/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/las-vegas-raiders/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="LV">
                             <span class="team-logo">LV</span>
-                            Las Vegas Raiders
+                            <span class="team-name">Las Vegas Raiders</span>
+                            <span class="team-record" data-record="LV"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/los-angeles-chargers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/los-angeles-chargers/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="LAC">
                             <span class="team-logo">LAC</span>
-                            Los Angeles Chargers
+                            <span class="team-name">Los Angeles Chargers</span>
+                            <span class="team-record" data-record="LAC"></span>
                         </a>
                     </div>
                 </div>
-            </div>
+        </div>
 
-            <!-- Playoff Picture Projection -->
-            <div class="playoff-picture" id="playoffs">
-                <h2 class="playoff-title">🏈 WEEK 1 PLAYOFF PICTURE INTEL 🏈</h2>
-                <div class="playoff-conferences">
-                    <div class="playoff-conference">
-                        <h3>AFC Playoff Projection</h3>
-                        <div class="playoff-seed">
-                            <span class="seed-number">1.</span>Buffalo Bills (1-0) - Division Leader
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">2.</span>Cincinnati Bengals (1-0) - Division Leader
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">3.</span>Jacksonville Jaguars (1-0) - Division Leader
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">4.</span>LA Chargers (1-0) - Division Leader
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">5.</span>Pittsburgh Steelers (1-0) - Wild Card
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">6.</span>Las Vegas Raiders (1-0) - Wild Card
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">7.</span>Indianapolis Colts (1-0) - Wild Card
-                        </div>
-                    </div>
-                    <div class="playoff-conference">
-                        <h3>NFC Playoff Projection</h3>
-                        <div class="playoff-seed">
-                            <span class="seed-number">1.</span>Philadelphia Eagles (1-0) - Division Leader
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">2.</span>Minnesota Vikings (1-0) - Division Leader
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">3.</span>Tampa Bay Buccaneers (1-0) - Division Leader
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">4.</span>San Francisco 49ers (1-0) - Division Leader
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">5.</span>Green Bay Packers (1-0) - Wild Card
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">6.</span>Washington Commanders (1-0) - Wild Card
-                        </div>
-                        <div class="playoff-seed">
-                            <span class="seed-number">7.</span>Arizona Cardinals (1-0) - Wild Card
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NFC Conference -->
-            <div class="conference" id="nfc">
-                <h2 class="conference-title">National Football Conference (NFC)</h2>
-                
-                <!-- NFC East -->
+        <!-- NFC -->
+        <div class="conference" id="nfc">
+            <h2 class="conference-title">National Football Conference (NFC)</h2>
                 <div class="division">
                     <h3 class="division-title">NFC East</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/dallas-cowboys/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/dallas-cowboys/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="DAL">
                             <span class="team-logo">DAL</span>
-                            Dallas Cowboys
+                            <span class="team-name">Dallas Cowboys</span>
+                            <span class="team-record" data-record="DAL"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/new-york-giants/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/new-york-giants/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="NYG">
                             <span class="team-logo">NYG</span>
-                            New York Giants
+                            <span class="team-name">New York Giants</span>
+                            <span class="team-record" data-record="NYG"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/philadelphia-eagles/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/philadelphia-eagles/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="PHI">
                             <span class="team-logo">PHI</span>
-                            Philadelphia Eagles
+                            <span class="team-name">Philadelphia Eagles</span>
+                            <span class="team-record" data-record="PHI"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/washington-commanders/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/washington-commanders/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="WAS">
                             <span class="team-logo">WAS</span>
-                            Washington Commanders
+                            <span class="team-name">Washington Commanders</span>
+                            <span class="team-record" data-record="WAS"></span>
                         </a>
                     </div>
                 </div>
-                
-                <!-- NFC North -->
+
                 <div class="division">
                     <h3 class="division-title">NFC North</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/chicago-bears/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/chicago-bears/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="CHI">
                             <span class="team-logo">CHI</span>
-                            Chicago Bears
+                            <span class="team-name">Chicago Bears</span>
+                            <span class="team-record" data-record="CHI"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/detroit-lions/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/detroit-lions/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="DET">
                             <span class="team-logo">DET</span>
-                            Detroit Lions
+                            <span class="team-name">Detroit Lions</span>
+                            <span class="team-record" data-record="DET"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/green-bay-packers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/green-bay-packers/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="GB">
                             <span class="team-logo">GB</span>
-                            Green Bay Packers
+                            <span class="team-name">Green Bay Packers</span>
+                            <span class="team-record" data-record="GB"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/minnesota-vikings/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/minnesota-vikings/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="MIN">
                             <span class="team-logo">MIN</span>
-                            Minnesota Vikings
+                            <span class="team-name">Minnesota Vikings</span>
+                            <span class="team-record" data-record="MIN"></span>
                         </a>
                     </div>
                 </div>
-                
-                <!-- NFC South -->
+
                 <div class="division">
                     <h3 class="division-title">NFC South</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/atlanta-falcons/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/atlanta-falcons/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="ATL">
                             <span class="team-logo">ATL</span>
-                            Atlanta Falcons
+                            <span class="team-name">Atlanta Falcons</span>
+                            <span class="team-record" data-record="ATL"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/carolina-panthers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/carolina-panthers/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="CAR">
                             <span class="team-logo">CAR</span>
-                            Carolina Panthers
+                            <span class="team-name">Carolina Panthers</span>
+                            <span class="team-record" data-record="CAR"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/new-orleans-saints/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/new-orleans-saints/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="NO">
                             <span class="team-logo">NO</span>
-                            New Orleans Saints
+                            <span class="team-name">New Orleans Saints</span>
+                            <span class="team-record" data-record="NO"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/tampa-bay-buccaneers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/tampa-bay-buccaneers/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="TB">
                             <span class="team-logo">TB</span>
-                            Tampa Bay Buccaneers
+                            <span class="team-name">Tampa Bay Buccaneers</span>
+                            <span class="team-record" data-record="TB"></span>
                         </a>
                     </div>
                 </div>
-                
-                <!-- NFC West -->
+
                 <div class="division">
                     <h3 class="division-title">NFC West</h3>
                     <div class="teams-grid">
-                        <a href="https://www.nfl.com/teams/arizona-cardinals/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/arizona-cardinals/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="ARI">
                             <span class="team-logo">ARI</span>
-                            Arizona Cardinals
+                            <span class="team-name">Arizona Cardinals</span>
+                            <span class="team-record" data-record="ARI"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/los-angeles-rams/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/los-angeles-rams/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="LAR">
                             <span class="team-logo">LAR</span>
-                            Los Angeles Rams
+                            <span class="team-name">Los Angeles Rams</span>
+                            <span class="team-record" data-record="LAR"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/san-francisco-49ers/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/san-francisco-49ers/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="SF">
                             <span class="team-logo">SF</span>
-                            San Francisco 49ers
+                            <span class="team-name">San Francisco 49ers</span>
+                            <span class="team-record" data-record="SF"></span>
                         </a>
-                        <a href="https://www.nfl.com/teams/seattle-seahawks/" target="_blank" rel="noopener noreferrer" class="team-link">
+                        <a href="https://www.nfl.com/teams/seattle-seahawks/" target="_blank" rel="noopener noreferrer" class="team-link" data-team="SEA">
                             <span class="team-logo">SEA</span>
-                            Seattle Seahawks
+                            <span class="team-name">Seattle Seahawks</span>
+                            <span class="team-record" data-record="SEA"></span>
                         </a>
                     </div>
                 </div>
-            </div>
         </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <p>© 2025 Big Sarge Game Day Center | All team names and logos are property of the National Football League</p>
-            <p>Built with HTML & CSS | <a href="https://github.com" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
-        </div>
+
     </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Big Sarge Game Day Center | Team names and logos are property of the National Football League</p>
+        <p>Schedule and results data from <a href="https://github.com/nflverse/nfldata" target="_blank" rel="noopener noreferrer">nflverse</a> &middot; last updated September 21, 2026</p>
+    </div>
+</div>
+
+<script id="nflData" type="application/json">{"season":"2026","games":[{"wk":1,"date":"2026-09-09","day":"Wednesday","time":"8:20 PM ET","away":"NE","home":"SEA","venue":"Lumen Field","div":false,"as":10,"hs":13},{"wk":1,"date":"2026-09-10","day":"Thursday","time":"8:35 PM ET","away":"SF","home":"LAR","venue":"Melbourne Cricket Ground","div":true,"as":27,"hs":7,"intl":"Melbourne, Australia","kind":"intl"},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"1:00 PM ET","away":"CHI","home":"CAR","venue":"Bank of America Stadium","div":false,"as":59,"hs":37},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"1:00 PM ET","away":"TB","home":"CIN","venue":"Paycor Stadium","div":false,"as":27,"hs":33},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"1:00 PM ET","away":"NO","home":"DET","venue":"Ford Field","div":false,"as":30,"hs":31},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"1:00 PM ET","away":"BUF","home":"HOU","venue":"Reliant Stadium","div":false,"as":36,"hs":31},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"1:00 PM ET","away":"BAL","home":"IND","venue":"Lucas Oil Stadium","div":false,"as":41,"hs":23},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"1:00 PM ET","away":"CLE","home":"JAX","venue":"EverBank Stadium","div":false,"as":10,"hs":34},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"1:00 PM ET","away":"ATL","home":"PIT","venue":"Acrisure Stadium","div":false,"as":13,"hs":20},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"1:00 PM ET","away":"NYJ","home":"TEN","venue":"Nissan Stadium","div":false,"as":23,"hs":10},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"4:25 PM ET","away":"ARI","home":"LAC","venue":"SoFi Stadium","div":false,"as":26,"hs":14},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"4:25 PM ET","away":"MIA","home":"LV","venue":"Allegiant Stadium","div":false,"as":13,"hs":27},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"4:25 PM ET","away":"GB","home":"MIN","venue":"U.S. Bank Stadium","div":true,"as":22,"hs":39},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"4:25 PM ET","away":"WAS","home":"PHI","venue":"Lincoln Financial Field","div":true,"as":22,"hs":24},{"wk":1,"date":"2026-09-13","day":"Sunday","time":"8:20 PM ET","away":"DAL","home":"NYG","venue":"MetLife Stadium","div":true,"as":20,"hs":28},{"wk":1,"date":"2026-09-14","day":"Monday","time":"8:15 PM ET","away":"DEN","home":"KC","venue":"GEHA Field at Arrowhead Stadium","div":true,"as":10,"hs":31,"kind":"mnf"},{"wk":2,"date":"2026-09-17","day":"Thursday","time":"8:15 PM ET","away":"DET","home":"BUF","venue":"Highmark Stadium","div":false,"as":31,"hs":41,"kind":"tnf"},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"1:00 PM ET","away":"CAR","home":"ATL","venue":"Mercedes-Benz Stadium","div":true,"as":34,"hs":3},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"1:00 PM ET","away":"NO","home":"BAL","venue":"M&T Bank Stadium","div":false,"as":24,"hs":17},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"1:00 PM ET","away":"MIN","home":"CHI","venue":"Soldier Field","div":true,"as":9,"hs":3},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"1:00 PM ET","away":"CIN","home":"HOU","venue":"Reliant Stadium","div":false,"as":20,"hs":6},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"1:00 PM ET","away":"PIT","home":"NE","venue":"Gillette Stadium","div":false,"as":3,"hs":20},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"1:00 PM ET","away":"GB","home":"NYJ","venue":"MetLife Stadium","div":false,"as":20,"hs":17},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"1:00 PM ET","away":"CLE","home":"TB","venue":"Raymond James Stadium","div":false,"as":23,"hs":19},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"1:00 PM ET","away":"PHI","home":"TEN","venue":"Nissan Stadium","div":false,"as":24,"hs":20},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"4:05 PM ET","away":"JAX","home":"DEN","venue":"Empower Field at Mile High","div":false,"as":13,"hs":20},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"4:05 PM ET","away":"LV","home":"LAC","venue":"SoFi Stadium","div":true,"as":26,"hs":14},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"4:25 PM ET","away":"SEA","home":"ARI","venue":"State Farm Stadium","div":true,"as":31,"hs":7},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"4:25 PM ET","away":"WAS","home":"DAL","venue":"AT&T Stadium","div":true,"as":20,"hs":37},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"4:25 PM ET","away":"MIA","home":"SF","venue":"Levi's Stadium","div":false,"as":13,"hs":35},{"wk":2,"date":"2026-09-20","day":"Sunday","time":"8:20 PM ET","away":"IND","home":"KC","venue":"GEHA Field at Arrowhead Stadium","div":false,"as":30,"hs":33},{"wk":2,"date":"2026-09-21","day":"Monday","time":"8:15 PM ET","away":"NYG","home":"LAR","venue":"SoFi Stadium","div":false,"kind":"mnf"},{"wk":3,"date":"2026-09-24","day":"Thursday","time":"8:15 PM ET","away":"ATL","home":"GB","venue":"Lambeau Field","div":false,"kind":"tnf"},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"1:00 PM ET","away":"LAC","home":"BUF","venue":"Highmark Stadium","div":false},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"1:00 PM ET","away":"CAR","home":"CLE","venue":"Huntington Bank Field","div":false},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"1:00 PM ET","away":"NYJ","home":"DET","venue":"Ford Field","div":false},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"1:00 PM ET","away":"HOU","home":"IND","venue":"Lucas Oil Stadium","div":true},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"1:00 PM ET","away":"NE","home":"JAX","venue":"EverBank Stadium","div":false},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"1:00 PM ET","away":"KC","home":"MIA","venue":"Hard Rock Stadium","div":false},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"1:00 PM ET","away":"TEN","home":"NYG","venue":"MetLife Stadium","div":false},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"1:00 PM ET","away":"CIN","home":"PIT","venue":"Acrisure Stadium","div":true},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"1:00 PM ET","away":"SEA","home":"WAS","venue":"Northwest Stadium","div":false},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"4:05 PM ET","away":"ARI","home":"SF","venue":"Levi's Stadium","div":true},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"4:05 PM ET","away":"MIN","home":"TB","venue":"Raymond James Stadium","div":false},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"4:25 PM ET","away":"BAL","home":"DAL","venue":"Maracana Stadium","div":false,"intl":"Rio de Janeiro, Brazil","kind":"intl"},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"4:25 PM ET","away":"LV","home":"NO","venue":"Caesars Superdome","div":false},{"wk":3,"date":"2026-09-27","day":"Sunday","time":"8:20 PM ET","away":"LAR","home":"DEN","venue":"Empower Field at Mile High","div":false},{"wk":3,"date":"2026-09-28","day":"Monday","time":"8:15 PM ET","away":"PHI","home":"CHI","venue":"Soldier Field","div":false,"kind":"mnf"},{"wk":4,"date":"2026-10-01","day":"Thursday","time":"8:15 PM ET","away":"PIT","home":"CLE","venue":"Huntington Bank Field","div":true,"kind":"tnf"},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"1:00 PM ET","away":"TEN","home":"BAL","venue":"M&T Bank Stadium","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"1:00 PM ET","away":"NE","home":"BUF","venue":"Highmark Stadium","div":true},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"1:00 PM ET","away":"NYJ","home":"CHI","venue":"Soldier Field","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"1:00 PM ET","away":"JAX","home":"CIN","venue":"Paycor Stadium","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"1:00 PM ET","away":"DAL","home":"HOU","venue":"Reliant Stadium","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"1:00 PM ET","away":"ARI","home":"NYG","venue":"MetLife Stadium","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"1:00 PM ET","away":"LAR","home":"PHI","venue":"Lincoln Financial Field","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"1:00 PM ET","away":"GB","home":"TB","venue":"Raymond James Stadium","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"4:05 PM ET","away":"MIA","home":"MIN","venue":"U.S. Bank Stadium","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"4:25 PM ET","away":"KC","home":"LV","venue":"Allegiant Stadium","div":true},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"4:25 PM ET","away":"LAC","home":"SEA","venue":"Lumen Field","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"4:25 PM ET","away":"DEN","home":"SF","venue":"Levi's Stadium","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"8:20 PM ET","away":"DET","home":"CAR","venue":"Bank of America Stadium","div":false},{"wk":4,"date":"2026-10-04","day":"Sunday","time":"9:30 AM ET","away":"IND","home":"WAS","venue":"Tottenham Hotspur Stadium","div":false,"intl":"London, England","kind":"intl"},{"wk":4,"date":"2026-10-05","day":"Monday","time":"8:15 PM ET","away":"ATL","home":"NO","venue":"Caesars Superdome","div":true,"kind":"mnf"},{"wk":5,"date":"2026-10-08","day":"Thursday","time":"8:15 PM ET","away":"TB","home":"DAL","venue":"AT&T Stadium","div":false,"kind":"tnf"},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"1:00 PM ET","away":"CIN","home":"MIA","venue":"Hard Rock Stadium","div":false},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"1:00 PM ET","away":"LV","home":"NE","venue":"Gillette Stadium","div":false},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"1:00 PM ET","away":"MIN","home":"NO","venue":"Caesars Superdome","div":false},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"1:00 PM ET","away":"CLE","home":"NYJ","venue":"MetLife Stadium","div":false},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"1:00 PM ET","away":"IND","home":"PIT","venue":"Acrisure Stadium","div":false},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"1:00 PM ET","away":"HOU","home":"TEN","venue":"Nissan Stadium","div":true},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"1:00 PM ET","away":"NYG","home":"WAS","venue":"Northwest Stadium","div":true},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"4:05 PM ET","away":"DEN","home":"LAC","venue":"SoFi Stadium","div":true},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"4:25 PM ET","away":"DET","home":"ARI","venue":"State Farm Stadium","div":false},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"4:25 PM ET","away":"CHI","home":"GB","venue":"Lambeau Field","div":true},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"4:25 PM ET","away":"SF","home":"SEA","venue":"Lumen Field","div":true},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"8:20 PM ET","away":"BAL","home":"ATL","venue":"Mercedes-Benz Stadium","div":false},{"wk":5,"date":"2026-10-11","day":"Sunday","time":"9:30 AM ET","away":"PHI","home":"JAX","venue":"Tottenham Hotspur Stadium","div":false},{"wk":5,"date":"2026-10-12","day":"Monday","time":"8:15 PM ET","away":"BUF","home":"LAR","venue":"SoFi Stadium","div":false,"kind":"mnf"},{"wk":6,"date":"2026-10-15","day":"Thursday","time":"8:15 PM ET","away":"SEA","home":"DEN","venue":"Empower Field at Mile High","div":false,"kind":"tnf"},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"1:00 PM ET","away":"CHI","home":"ATL","venue":"Mercedes-Benz Stadium","div":false},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"1:00 PM ET","away":"BAL","home":"CLE","venue":"Huntington Bank Field","div":true},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"1:00 PM ET","away":"TEN","home":"IND","venue":"Lucas Oil Stadium","div":true},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"1:00 PM ET","away":"NYJ","home":"NE","venue":"Gillette Stadium","div":true},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"1:00 PM ET","away":"NO","home":"NYG","venue":"MetLife Stadium","div":false},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"1:00 PM ET","away":"CAR","home":"PHI","venue":"Lincoln Financial Field","div":false},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"1:00 PM ET","away":"PIT","home":"TB","venue":"Raymond James Stadium","div":false},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"4:05 PM ET","away":"ARI","home":"LAR","venue":"SoFi Stadium","div":true},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"4:25 PM ET","away":"LAC","home":"KC","venue":"GEHA Field at Arrowhead Stadium","div":true},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"4:25 PM ET","away":"BUF","home":"LV","venue":"Allegiant Stadium","div":false},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"8:20 PM ET","away":"DAL","home":"GB","venue":"Lambeau Field","div":false},{"wk":6,"date":"2026-10-18","day":"Sunday","time":"9:30 AM ET","away":"HOU","home":"JAX","venue":"Wembley Stadium","div":true,"intl":"London, England","kind":"intl"},{"wk":6,"date":"2026-10-19","day":"Monday","time":"8:15 PM ET","away":"WAS","home":"SF","venue":"Levi's Stadium","div":false,"kind":"mnf"},{"wk":7,"date":"2026-10-22","day":"Thursday","time":"8:15 PM ET","away":"NE","home":"CHI","venue":"Soldier Field","div":false,"kind":"tnf"},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"1:00 PM ET","away":"SF","home":"ATL","venue":"Mercedes-Benz Stadium","div":false},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"1:00 PM ET","away":"CIN","home":"BAL","venue":"M&T Bank Stadium","div":true},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"1:00 PM ET","away":"TB","home":"CAR","venue":"Bank of America Stadium","div":true},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"1:00 PM ET","away":"NYG","home":"HOU","venue":"Reliant Stadium","div":false},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"1:00 PM ET","away":"IND","home":"MIN","venue":"U.S. Bank Stadium","div":false},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"1:00 PM ET","away":"MIA","home":"NYJ","venue":"MetLife Stadium","div":true},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"1:00 PM ET","away":"CLE","home":"TEN","venue":"Nissan Stadium","div":false},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"4:05 PM ET","away":"DEN","home":"ARI","venue":"State Farm Stadium","div":false},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"4:25 PM ET","away":"GB","home":"DET","venue":"Ford Field","div":true},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"4:25 PM ET","away":"LAR","home":"LV","venue":"Allegiant Stadium","div":false},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"8:20 PM ET","away":"KC","home":"SEA","venue":"Lumen Field","div":false},{"wk":7,"date":"2026-10-25","day":"Sunday","time":"9:30 AM ET","away":"PIT","home":"NO","venue":"Stade de France","div":false,"intl":"Paris, France","kind":"intl"},{"wk":7,"date":"2026-10-26","day":"Monday","time":"8:15 PM ET","away":"DAL","home":"PHI","venue":"Lincoln Financial Field","div":true,"kind":"mnf"},{"wk":8,"date":"2026-10-29","day":"Thursday","time":"8:15 PM ET","away":"CAR","home":"GB","venue":"Lambeau Field","div":false,"kind":"tnf"},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"1:00 PM ET","away":"BAL","home":"BUF","venue":"Highmark Stadium","div":false},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"1:00 PM ET","away":"TEN","home":"CIN","venue":"Paycor Stadium","div":false},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"1:00 PM ET","away":"ARI","home":"DAL","venue":"AT&T Stadium","div":false},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"1:00 PM ET","away":"MIN","home":"DET","venue":"Ford Field","div":true},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"1:00 PM ET","away":"IND","home":"JAX","venue":"EverBank Stadium","div":true},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"1:00 PM ET","away":"LV","home":"NYJ","venue":"MetLife Stadium","div":false},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"1:00 PM ET","away":"CLE","home":"PIT","venue":"Acrisure Stadium","div":true},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"1:00 PM ET","away":"ATL","home":"TB","venue":"Raymond James Stadium","div":true},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"4:05 PM ET","away":"LAC","home":"LAR","venue":"SoFi Stadium","div":false},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"4:25 PM ET","away":"KC","home":"DEN","venue":"Empower Field at Mile High","div":true},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"4:25 PM ET","away":"NE","home":"MIA","venue":"Hard Rock Stadium","div":true},{"wk":8,"date":"2026-11-01","day":"Sunday","time":"8:20 PM ET","away":"PHI","home":"WAS","venue":"Northwest Stadium","div":true},{"wk":8,"date":"2026-11-02","day":"Monday","time":"8:15 PM ET","away":"CHI","home":"SEA","venue":"Lumen Field","div":false,"kind":"mnf"},{"wk":9,"date":"2026-11-05","day":"Thursday","time":"8:15 PM ET","away":"JAX","home":"BAL","venue":"M&T Bank Stadium","div":false,"kind":"tnf"},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"1:00 PM ET","away":"DEN","home":"CAR","venue":"Bank of America Stadium","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"1:00 PM ET","away":"DAL","home":"IND","venue":"Lucas Oil Stadium","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"1:00 PM ET","away":"NYJ","home":"KC","venue":"GEHA Field at Arrowhead Stadium","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"1:00 PM ET","away":"DET","home":"MIA","venue":"Hard Rock Stadium","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"1:00 PM ET","away":"CLE","home":"NO","venue":"Caesars Superdome","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"1:00 PM ET","away":"NYG","home":"PHI","venue":"Lincoln Financial Field","div":true},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"1:00 PM ET","away":"LAR","home":"WAS","venue":"Northwest Stadium","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"4:05 PM ET","away":"HOU","home":"LAC","venue":"SoFi Stadium","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"4:05 PM ET","away":"LV","home":"SF","venue":"Levi's Stadium","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"4:25 PM ET","away":"GB","home":"NE","venue":"Gillette Stadium","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"4:25 PM ET","away":"ARI","home":"SEA","venue":"Lumen Field","div":true},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"8:20 PM ET","away":"TB","home":"CHI","venue":"Soldier Field","div":false},{"wk":9,"date":"2026-11-08","day":"Sunday","time":"9:30 AM ET","away":"CIN","home":"ATL","venue":"Bernabeu","div":false,"intl":"Madrid, Spain","kind":"intl"},{"wk":9,"date":"2026-11-09","day":"Monday","time":"8:15 PM ET","away":"BUF","home":"MIN","venue":"U.S. Bank Stadium","div":false,"kind":"mnf"},{"wk":10,"date":"2026-11-12","day":"Thursday","time":"8:15 PM ET","away":"WAS","home":"NYG","venue":"MetLife Stadium","div":true,"kind":"tnf"},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"1:00 PM ET","away":"KC","home":"ATL","venue":"Mercedes-Benz Stadium","div":false},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"1:00 PM ET","away":"HOU","home":"CLE","venue":"Huntington Bank Field","div":false},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"1:00 PM ET","away":"MIN","home":"GB","venue":"Lambeau Field","div":true},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"1:00 PM ET","away":"MIA","home":"IND","venue":"Lucas Oil Stadium","div":false},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"1:00 PM ET","away":"CAR","home":"NO","venue":"Caesars Superdome","div":true},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"1:00 PM ET","away":"BUF","home":"NYJ","venue":"MetLife Stadium","div":true},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"1:00 PM ET","away":"JAX","home":"TEN","venue":"Nissan Stadium","div":true},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"4:05 PM ET","away":"LAR","home":"ARI","venue":"State Farm Stadium","div":true},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"4:05 PM ET","away":"SEA","home":"LV","venue":"Allegiant Stadium","div":false},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"4:25 PM ET","away":"SF","home":"DAL","venue":"AT&T Stadium","div":false},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"8:20 PM ET","away":"PIT","home":"CIN","venue":"Paycor Stadium","div":true},{"wk":10,"date":"2026-11-15","day":"Sunday","time":"9:30 AM ET","away":"NE","home":"DET","venue":"FC Bayern Munich Stadium","div":false,"intl":"Munich, Germany","kind":"intl"},{"wk":10,"date":"2026-11-16","day":"Monday","time":"8:15 PM ET","away":"LAC","home":"BAL","venue":"M&T Bank Stadium","div":false,"kind":"mnf"},{"wk":11,"date":"2026-11-19","day":"Thursday","time":"8:15 PM ET","away":"IND","home":"HOU","venue":"Reliant Stadium","div":true,"kind":"tnf"},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"1:00 PM ET","away":"MIA","home":"BUF","venue":"Highmark Stadium","div":true},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"1:00 PM ET","away":"BAL","home":"CAR","venue":"Bank of America Stadium","div":false},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"1:00 PM ET","away":"NO","home":"CHI","venue":"Soldier Field","div":false},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"1:00 PM ET","away":"TEN","home":"DAL","venue":"AT&T Stadium","div":false},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"1:00 PM ET","away":"TB","home":"DET","venue":"Ford Field","div":false},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"1:00 PM ET","away":"ARI","home":"KC","venue":"GEHA Field at Arrowhead Stadium","div":false},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"1:00 PM ET","away":"JAX","home":"NYG","venue":"MetLife Stadium","div":false},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"4:05 PM ET","away":"NYJ","home":"LAC","venue":"SoFi Stadium","div":false},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"4:25 PM ET","away":"LV","home":"DEN","venue":"Empower Field at Mile High","div":true},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"4:25 PM ET","away":"PIT","home":"PHI","venue":"Lincoln Financial Field","div":false},{"wk":11,"date":"2026-11-22","day":"Sunday","time":"8:20 PM ET","away":"MIN","home":"SF","venue":"Estadio Banorte","div":false,"intl":"Mexico City, Mexico","kind":"intl"},{"wk":11,"date":"2026-11-23","day":"Monday","time":"8:15 PM ET","away":"CIN","home":"WAS","venue":"Northwest Stadium","div":false,"kind":"mnf"},{"wk":12,"date":"2026-11-25","day":"Wednesday","time":"8:00 PM ET","away":"GB","home":"LAR","venue":"SoFi Stadium","div":false},{"wk":12,"date":"2026-11-26","day":"Thursday","time":"1:00 PM ET","away":"CHI","home":"DET","venue":"Ford Field","div":true,"kind":"tnf"},{"wk":12,"date":"2026-11-26","day":"Thursday","time":"4:30 PM ET","away":"PHI","home":"DAL","venue":"AT&T Stadium","div":true,"kind":"tnf"},{"wk":12,"date":"2026-11-26","day":"Thursday","time":"8:20 PM ET","away":"KC","home":"BUF","venue":"Highmark Stadium","div":false,"kind":"tnf"},{"wk":12,"date":"2026-11-27","day":"Friday","time":"3:00 PM ET","away":"DEN","home":"PIT","venue":"Acrisure Stadium","div":false},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"1:00 PM ET","away":"NO","home":"CIN","venue":"Paycor Stadium","div":false},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"1:00 PM ET","away":"LV","home":"CLE","venue":"Huntington Bank Field","div":false},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"1:00 PM ET","away":"BAL","home":"HOU","venue":"Reliant Stadium","div":false},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"1:00 PM ET","away":"NYG","home":"IND","venue":"Lucas Oil Stadium","div":false},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"1:00 PM ET","away":"NYJ","home":"MIA","venue":"Hard Rock Stadium","div":true},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"1:00 PM ET","away":"ATL","home":"MIN","venue":"U.S. Bank Stadium","div":false},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"4:05 PM ET","away":"TEN","home":"JAX","venue":"EverBank Stadium","div":true},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"4:25 PM ET","away":"WAS","home":"ARI","venue":"State Farm Stadium","div":false},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"4:25 PM ET","away":"SEA","home":"SF","venue":"Levi's Stadium","div":true},{"wk":12,"date":"2026-11-29","day":"Sunday","time":"8:20 PM ET","away":"NE","home":"LAC","venue":"SoFi Stadium","div":false},{"wk":12,"date":"2026-11-30","day":"Monday","time":"8:15 PM ET","away":"CAR","home":"TB","venue":"Raymond James Stadium","div":true,"kind":"mnf"},{"wk":13,"date":"2026-12-03","day":"Thursday","time":"8:15 PM ET","away":"KC","home":"LAR","venue":"SoFi Stadium","div":false,"kind":"tnf"},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"1:00 PM ET","away":"DET","home":"ATL","venue":"Mercedes-Benz Stadium","div":false},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"1:00 PM ET","away":"JAX","home":"CHI","venue":"Soldier Field","div":false},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"1:00 PM ET","away":"CIN","home":"CLE","venue":"Huntington Bank Field","div":true},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"1:00 PM ET","away":"GB","home":"NO","venue":"Caesars Superdome","div":false},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"1:00 PM ET","away":"SF","home":"NYG","venue":"MetLife Stadium","div":false},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"1:00 PM ET","away":"LAC","home":"TB","venue":"Raymond James Stadium","div":false},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"1:00 PM ET","away":"WAS","home":"TEN","venue":"Nissan Stadium","div":false},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"4:05 PM ET","away":"PHI","home":"ARI","venue":"State Farm Stadium","div":false},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"4:05 PM ET","away":"MIA","home":"DEN","venue":"Empower Field at Mile High","div":false},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"4:25 PM ET","away":"CAR","home":"MIN","venue":"U.S. Bank Stadium","div":false},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"4:25 PM ET","away":"BUF","home":"NE","venue":"Gillette Stadium","div":true},{"wk":13,"date":"2026-12-06","day":"Sunday","time":"8:20 PM ET","away":"HOU","home":"PIT","venue":"Acrisure Stadium","div":false},{"wk":13,"date":"2026-12-07","day":"Monday","time":"8:15 PM ET","away":"DAL","home":"SEA","venue":"Lumen Field","div":false,"kind":"mnf"},{"wk":14,"date":"2026-12-10","day":"Thursday","time":"8:15 PM ET","away":"MIN","home":"NE","venue":"Gillette Stadium","div":false,"kind":"tnf"},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"1:00 PM ET","away":"TB","home":"BAL","venue":"M&T Bank Stadium","div":false},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"1:00 PM ET","away":"NO","home":"CAR","venue":"Bank of America Stadium","div":true},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"1:00 PM ET","away":"ATL","home":"CLE","venue":"Huntington Bank Field","div":false},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"1:00 PM ET","away":"TEN","home":"DET","venue":"Ford Field","div":false},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"1:00 PM ET","away":"CHI","home":"MIA","venue":"Hard Rock Stadium","div":false},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"1:00 PM ET","away":"DEN","home":"NYJ","venue":"MetLife Stadium","div":false},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"1:00 PM ET","away":"IND","home":"PHI","venue":"Lincoln Financial Field","div":false},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"1:00 PM ET","away":"HOU","home":"WAS","venue":"Northwest Stadium","div":false},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"4:05 PM ET","away":"LAC","home":"LV","venue":"Allegiant Stadium","div":true},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"4:25 PM ET","away":"KC","home":"CIN","venue":"Paycor Stadium","div":false},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"4:25 PM ET","away":"NYG","home":"SEA","venue":"Lumen Field","div":false},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"4:25 PM ET","away":"LAR","home":"SF","venue":"Levi's Stadium","div":true},{"wk":14,"date":"2026-12-13","day":"Sunday","time":"8:20 PM ET","away":"BUF","home":"GB","venue":"Lambeau Field","div":false},{"wk":14,"date":"2026-12-14","day":"Monday","time":"8:15 PM ET","away":"PIT","home":"JAX","venue":"EverBank Stadium","div":false,"kind":"mnf"},{"wk":15,"date":"2026-12-17","day":"Thursday","time":"8:15 PM ET","away":"SF","home":"LAC","venue":"SoFi Stadium","div":false,"kind":"tnf"},{"wk":15,"date":"2026-12-19","day":"Saturday","time":"5:00 PM ET","away":"SEA","home":"PHI","venue":"Lincoln Financial Field","div":false,"kind":"sat"},{"wk":15,"date":"2026-12-19","day":"Saturday","time":"8:20 PM ET","away":"CHI","home":"BUF","venue":"Highmark Stadium","div":false,"kind":"sat"},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"1:00 PM ET","away":"CIN","home":"CAR","venue":"Bank of America Stadium","div":false},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"1:00 PM ET","away":"MIA","home":"GB","venue":"Lambeau Field","div":false},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"1:00 PM ET","away":"JAX","home":"HOU","venue":"Reliant Stadium","div":true},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"1:00 PM ET","away":"CLE","home":"NYG","venue":"MetLife Stadium","div":false},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"1:00 PM ET","away":"BAL","home":"PIT","venue":"Acrisure Stadium","div":true},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"1:00 PM ET","away":"NO","home":"TB","venue":"Raymond James Stadium","div":true},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"1:00 PM ET","away":"IND","home":"TEN","venue":"Nissan Stadium","div":true},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"1:00 PM ET","away":"ATL","home":"WAS","venue":"Northwest Stadium","div":false},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"4:05 PM ET","away":"NYJ","home":"ARI","venue":"State Farm Stadium","div":false},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"4:25 PM ET","away":"DAL","home":"LAR","venue":"SoFi Stadium","div":false},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"4:25 PM ET","away":"DEN","home":"LV","venue":"Allegiant Stadium","div":true},{"wk":15,"date":"2026-12-20","day":"Sunday","time":"8:20 PM ET","away":"DET","home":"MIN","venue":"U.S. Bank Stadium","div":true},{"wk":15,"date":"2026-12-21","day":"Monday","time":"8:15 PM ET","away":"NE","home":"KC","venue":"GEHA Field at Arrowhead Stadium","div":false,"kind":"mnf"},{"wk":16,"date":"2026-12-24","day":"Thursday","time":"8:15 PM ET","away":"HOU","home":"PHI","venue":"Lincoln Financial Field","div":false,"kind":"tnf"},{"wk":16,"date":"2026-12-25","day":"Friday","time":"1:00 PM ET","away":"GB","home":"CHI","venue":"Soldier Field","div":true},{"wk":16,"date":"2026-12-25","day":"Friday","time":"4:30 PM ET","away":"BUF","home":"DEN","venue":"Empower Field at Mile High","div":false},{"wk":16,"date":"2026-12-25","day":"Friday","time":"8:15 PM ET","away":"LAR","home":"SEA","venue":"Lumen Field","div":true},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"1:00 PM ET","away":"TB","home":"ATL","venue":"Mercedes-Benz Stadium","div":true},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"1:00 PM ET","away":"CLE","home":"BAL","venue":"M&T Bank Stadium","div":true},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"1:00 PM ET","away":"CIN","home":"IND","venue":"Lucas Oil Stadium","div":false},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"1:00 PM ET","away":"LAC","home":"MIA","venue":"Hard Rock Stadium","div":false},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"1:00 PM ET","away":"WAS","home":"MIN","venue":"U.S. Bank Stadium","div":false},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"1:00 PM ET","away":"ARI","home":"NO","venue":"Caesars Superdome","div":false},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"1:00 PM ET","away":"NE","home":"NYJ","venue":"MetLife Stadium","div":true},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"1:00 PM ET","away":"CAR","home":"PIT","venue":"Acrisure Stadium","div":false},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"4:05 PM ET","away":"TEN","home":"LV","venue":"Allegiant Stadium","div":false},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"4:25 PM ET","away":"SF","home":"KC","venue":"GEHA Field at Arrowhead Stadium","div":false},{"wk":16,"date":"2026-12-27","day":"Sunday","time":"8:20 PM ET","away":"JAX","home":"DAL","venue":"AT&T Stadium","div":false},{"wk":16,"date":"2026-12-28","day":"Monday","time":"8:15 PM ET","away":"NYG","home":"DET","venue":"Ford Field","div":false,"kind":"mnf"},{"wk":17,"date":"2026-12-31","day":"Thursday","time":"8:15 PM ET","away":"BAL","home":"CIN","venue":"Paycor Stadium","div":true,"kind":"tnf"},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"NO","home":"ATL","venue":"Mercedes-Benz Stadium","div":true},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"SEA","home":"CAR","venue":"Bank of America Stadium","div":false},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"IND","home":"CLE","venue":"Huntington Bank Field","div":false},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"NYG","home":"DAL","venue":"AT&T Stadium","div":true},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"WAS","home":"JAX","venue":"EverBank Stadium","div":false},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"KC","home":"LAC","venue":"SoFi Stadium","div":true},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"BUF","home":"MIA","venue":"Hard Rock Stadium","div":true},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"DEN","home":"NE","venue":"Gillette Stadium","div":false},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"MIN","home":"NYJ","venue":"MetLife Stadium","div":false},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"LAR","home":"TB","venue":"Raymond James Stadium","div":false},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"1:00 PM ET","away":"PIT","home":"TEN","venue":"Nissan Stadium","div":false},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"4:05 PM ET","away":"LV","home":"ARI","venue":"State Farm Stadium","div":false},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"4:25 PM ET","away":"DET","home":"CHI","venue":"Soldier Field","div":true},{"wk":17,"date":"2027-01-03","day":"Sunday","time":"8:20 PM ET","away":"PHI","home":"SF","venue":"Levi's Stadium","div":false},{"wk":17,"date":"2027-01-04","day":"Monday","time":"8:15 PM ET","away":"HOU","home":"GB","venue":"Lambeau Field","div":false,"kind":"mnf"},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"SF","home":"ARI","venue":"State Farm Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"PIT","home":"BAL","venue":"M&T Bank Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"NYJ","home":"BUF","venue":"Highmark Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"ATL","home":"CAR","venue":"Bank of America Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"CLE","home":"CIN","venue":"Paycor Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"LAC","home":"DEN","venue":"Empower Field at Mile High","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"DET","home":"GB","venue":"Lambeau Field","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"TEN","home":"HOU","venue":"Reliant Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"JAX","home":"IND","venue":"Lucas Oil Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"LV","home":"KC","venue":"GEHA Field at Arrowhead Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"SEA","home":"LAR","venue":"SoFi Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"CHI","home":"MIN","venue":"U.S. Bank Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"MIA","home":"NE","venue":"Gillette Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"TB","home":"NO","venue":"Caesars Superdome","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"PHI","home":"NYG","venue":"MetLife Stadium","div":true,"tbd":true},{"wk":18,"date":"2027-01-10","day":"Sunday","time":"TBD","away":"DAL","home":"WAS","venue":"Northwest Stadium","div":true,"tbd":true}],"notes":{"18":"Week 18 matchups are final \u2014 all 16 are division games \u2014 but the NFL assigns days and kickoff times only after Week 17, so times show as TBD. Expect a Saturday, January 9 split once they are announced."},"teams":{"BUF":{"n":"Buffalo Bills","c":"AFC","d":"East","u":"https://www.nfl.com/teams/buffalo-bills/"},"MIA":{"n":"Miami Dolphins","c":"AFC","d":"East","u":"https://www.nfl.com/teams/miami-dolphins/"},"NE":{"n":"New England Patriots","c":"AFC","d":"East","u":"https://www.nfl.com/teams/new-england-patriots/"},"NYJ":{"n":"New York Jets","c":"AFC","d":"East","u":"https://www.nfl.com/teams/new-york-jets/"},"BAL":{"n":"Baltimore Ravens","c":"AFC","d":"North","u":"https://www.nfl.com/teams/baltimore-ravens/"},"CIN":{"n":"Cincinnati Bengals","c":"AFC","d":"North","u":"https://www.nfl.com/teams/cincinnati-bengals/"},"CLE":{"n":"Cleveland Browns","c":"AFC","d":"North","u":"https://www.nfl.com/teams/cleveland-browns/"},"PIT":{"n":"Pittsburgh Steelers","c":"AFC","d":"North","u":"https://www.nfl.com/teams/pittsburgh-steelers/"},"HOU":{"n":"Houston Texans","c":"AFC","d":"South","u":"https://www.nfl.com/teams/houston-texans/"},"IND":{"n":"Indianapolis Colts","c":"AFC","d":"South","u":"https://www.nfl.com/teams/indianapolis-colts/"},"JAX":{"n":"Jacksonville Jaguars","c":"AFC","d":"South","u":"https://www.nfl.com/teams/jacksonville-jaguars/"},"TEN":{"n":"Tennessee Titans","c":"AFC","d":"South","u":"https://www.nfl.com/teams/tennessee-titans/"},"DEN":{"n":"Denver Broncos","c":"AFC","d":"West","u":"https://www.nfl.com/teams/denver-broncos/"},"KC":{"n":"Kansas City Chiefs","c":"AFC","d":"West","u":"https://www.nfl.com/teams/kansas-city-chiefs/"},"LV":{"n":"Las Vegas Raiders","c":"AFC","d":"West","u":"https://www.nfl.com/teams/las-vegas-raiders/"},"LAC":{"n":"Los Angeles Chargers","c":"AFC","d":"West","u":"https://www.nfl.com/teams/los-angeles-chargers/"},"DAL":{"n":"Dallas Cowboys","c":"NFC","d":"East","u":"https://www.nfl.com/teams/dallas-cowboys/"},"NYG":{"n":"New York Giants","c":"NFC","d":"East","u":"https://www.nfl.com/teams/new-york-giants/"},"PHI":{"n":"Philadelphia Eagles","c":"NFC","d":"East","u":"https://www.nfl.com/teams/philadelphia-eagles/"},"WAS":{"n":"Washington Commanders","c":"NFC","d":"East","u":"https://www.nfl.com/teams/washington-commanders/"},"CHI":{"n":"Chicago Bears","c":"NFC","d":"North","u":"https://www.nfl.com/teams/chicago-bears/"},"DET":{"n":"Detroit Lions","c":"NFC","d":"North","u":"https://www.nfl.com/teams/detroit-lions/"},"GB":{"n":"Green Bay Packers","c":"NFC","d":"North","u":"https://www.nfl.com/teams/green-bay-packers/"},"MIN":{"n":"Minnesota Vikings","c":"NFC","d":"North","u":"https://www.nfl.com/teams/minnesota-vikings/"},"ATL":{"n":"Atlanta Falcons","c":"NFC","d":"South","u":"https://www.nfl.com/teams/atlanta-falcons/"},"CAR":{"n":"Carolina Panthers","c":"NFC","d":"South","u":"https://www.nfl.com/teams/carolina-panthers/"},"NO":{"n":"New Orleans Saints","c":"NFC","d":"South","u":"https://www.nfl.com/teams/new-orleans-saints/"},"TB":{"n":"Tampa Bay Buccaneers","c":"NFC","d":"South","u":"https://www.nfl.com/teams/tampa-bay-buccaneers/"},"ARI":{"n":"Arizona Cardinals","c":"NFC","d":"West","u":"https://www.nfl.com/teams/arizona-cardinals/"},"LAR":{"n":"Los Angeles Rams","c":"NFC","d":"West","u":"https://www.nfl.com/teams/los-angeles-rams/"},"SF":{"n":"San Francisco 49ers","c":"NFC","d":"West","u":"https://www.nfl.com/teams/san-francisco-49ers/"},"SEA":{"n":"Seattle Seahawks","c":"NFC","d":"West","u":"https://www.nfl.com/teams/seattle-seahawks/"}},"byes":{"5":["CAR","KC"],"6":["CIN","DET","MIA","MIN"],"7":["BUF","JAX","LAC","WAS"],"8":["HOU","NO","NYG","SF"],"9":["PIT","TEN"],"10":["CHI","DEN","PHI","TB"],"11":["ATL","CLE","GB","LAR","NE","SEA"],"13":["BAL","IND","LV","NYJ"],"14":["ARI","DAL"]},"ranges":{"1":"Sep 9\u201314","2":"Sep 17\u201321","3":"Sep 24\u201328","4":"Oct 1\u20135","5":"Oct 8\u201312","6":"Oct 15\u201319","7":"Oct 22\u201326","8":"Oct 29 \u2013 Nov 2","9":"Nov 5\u20139","10":"Nov 12\u201316","11":"Nov 19\u201323","12":"Nov 25\u201330","13":"Dec 3\u20137","14":"Dec 10\u201314","15":"Dec 17\u201321","16":"Dec 24\u201328","17":"Dec 31 \u2013 Jan 4","18":"Jan 10"},"currentWeek":2,"played":31}</script>
+<script>
+(function () {
+    'use strict';
+
+    var DATA = JSON.parse(document.getElementById('nflData').textContent);
+    var GAMES = DATA.games, TEAMS = DATA.teams;
+    var DIV_ORDER = ['East', 'North', 'South', 'West'];
+    var TAG_LABEL = { tnf: 'Thursday Night', mnf: 'Monday Night', sat: 'Saturday', intl: 'International' };
+
+    function el(tag, cls, text) {
+        var n = document.createElement(tag);
+        if (cls) n.className = cls;
+        if (text != null) n.textContent = text;
+        return n;
+    }
+
+    /* ---- records computed from played games ---- */
+    var records = {};
+    Object.keys(TEAMS).forEach(function (t) {
+        records[t] = { w: 0, l: 0, t: 0, pf: 0, pa: 0, dw: 0, dl: 0, dt: 0 };
+    });
+
+    GAMES.forEach(function (g) {
+        if (g.hs == null || g.as == null) return;
+        var h = records[g.home], a = records[g.away];
+        h.pf += g.hs; h.pa += g.as;
+        a.pf += g.as; a.pa += g.hs;
+        if (g.hs > g.as) { h.w++; a.l++; if (g.div) { h.dw++; a.dl++; } }
+        else if (g.as > g.hs) { a.w++; h.l++; if (g.div) { a.dw++; h.dl++; } }
+        else { h.t++; a.t++; if (g.div) { h.dt++; a.dt++; } }
+    });
+
+    function recStr(t) {
+        var r = records[t];
+        return r.t ? r.w + '-' + r.l + '-' + r.t : r.w + '-' + r.l;
+    }
+    function pct(r) {
+        var n = r.w + r.l + r.t;
+        return n ? (r.w + r.t * 0.5) / n : 0;
+    }
+    function divPct(r) {
+        var n = r.dw + r.dl + r.dt;
+        return n ? (r.dw + r.dt * 0.5) / n : 0;
+    }
+    /* win pct, then division record, then point differential, then name */
+    function rank(a, b) {
+        var d = pct(records[b]) - pct(records[a]);
+        if (d) return d;
+        d = divPct(records[b]) - divPct(records[a]);
+        if (d) return d;
+        d = (records[b].pf - records[b].pa) - (records[a].pf - records[a].pa);
+        if (d) return d;
+        return TEAMS[a].n.localeCompare(TEAMS[b].n);
+    }
+
+    /* ---- season status ---- */
+    function renderSeasonBar() {
+        var bar = document.getElementById('seasonBar');
+        var total = GAMES.length;
+        var next = GAMES.filter(function (g) { return g.hs == null; })[0];
+        var stats = [
+            ['Season', '2026', '18 weeks &middot; 272 games'],
+            ['Current week', 'Week ' + DATA.currentWeek, DATA.ranges[DATA.currentWeek]],
+            ['Games played', DATA.played + ' of ' + total,
+             Math.round(DATA.played / total * 100) + '% of the season'],
+            ['Next kickoff', next ? next.day + ', ' + fmtDate(next.date) : 'Season complete',
+             next ? next.away + ' at ' + next.home + ' &middot; ' + next.time : 'See you in the playoffs']
+        ];
+        stats.forEach(function (s) {
+            var d = el('div', 'stat');
+            d.appendChild(el('div', 'label', s[0]));
+            d.appendChild(el('div', 'value', s[1]));
+            var sub = el('div', 'sub');
+            sub.innerHTML = s[2];
+            d.appendChild(sub);
+            bar.appendChild(d);
+        });
+    }
+
+    function fmtDate(iso) {
+        var p = iso.split('-');
+        var d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]));
+        return d.toLocaleDateString('en-US',
+            { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+    }
+
+    /* ---- schedule ---- */
+    function gameNode(g) {
+        var done = g.hs != null && g.as != null;
+        var node = el('div', 'game' + (done ? ' final' : ''));
+
+        var time = el('div', 'game-time' + (g.tbd ? ' tbd' : ''));
+        if (done) {
+            var tag = el('span', 'final-tag', 'FINAL');
+            time.appendChild(tag);
+        } else {
+            time.textContent = g.time;
+        }
+        node.appendChild(time);
+
+        var m = el('div', 'matchup');
+        [[g.away, g.as, g.hs], [g.home, g.hs, g.as]].forEach(function (p, i) {
+            var won = done && p[1] > p[2];
+            var side = el('div', 'side' + (won ? ' win' : ''));
+            side.appendChild(el('span', 'abbr', p[0]));
+            side.appendChild(el('span', 'full', TEAMS[p[0]].n));
+            if (done) side.appendChild(el('span', 'score', String(p[1])));
+            m.appendChild(side);
+        });
+        node.appendChild(m);
+
+        var tags = el('div', 'tags');
+        if (g.kind) tags.appendChild(el('span', 'tag ' + g.kind, TAG_LABEL[g.kind]));
+        if (g.div) tags.appendChild(el('span', 'tag div', 'Division'));
+        if (g.intl) tags.appendChild(el('span', 'venue', g.intl));
+        node.appendChild(tags);
+
+        return node;
+    }
+
+    function renderWeek(wk) {
+        var panel = document.getElementById('weekPanel');
+        panel.textContent = '';
+
+        var head = el('div', 'week-head');
+        head.appendChild(el('h3', null, 'Week ' + wk));
+        head.appendChild(el('span', 'dates', DATA.ranges[wk]));
+        panel.appendChild(head);
+
+        if (DATA.notes[wk]) {
+            panel.appendChild(el('div', 'week-note', DATA.notes[wk]));
+        }
+
+        var wkGames = GAMES.filter(function (g) { return g.wk === wk; });
+        var seen = [];
+        wkGames.forEach(function (g) {
+            if (seen.indexOf(g.date) === -1) seen.push(g.date);
+        });
+
+        seen.forEach(function (date) {
+            var grp = el('div', 'day-group');
+            var dayGames = wkGames.filter(function (g) { return g.date === date; });
+            grp.appendChild(el('div', 'day-label', dayGames[0].day + ', ' + fmtDate(date)));
+            var list = el('div', 'game-list');
+            dayGames.forEach(function (g) { list.appendChild(gameNode(g)); });
+            grp.appendChild(list);
+            panel.appendChild(grp);
+        });
+
+        if (DATA.byes[wk]) {
+            var b = el('div', 'byes');
+            b.appendChild(el('strong', null, 'On bye: '));
+            b.appendChild(document.createTextNode(
+                DATA.byes[wk].map(function (t) { return TEAMS[t].n; }).join(', ')));
+            panel.appendChild(b);
+        }
+    }
+
+    function renderTabs() {
+        var tabs = document.getElementById('weekTabs');
+        var buttons = [];
+
+        for (var wk = 1; wk <= 18; wk++) {
+            (function (w) {
+                var b = el('button', 'week-tab');
+                b.type = 'button';
+                b.setAttribute('role', 'tab');
+                b.id = 'wk-tab-' + w;
+                b.appendChild(document.createTextNode('Week ' + w));
+                if (GAMES.some(function (g) { return g.wk === w && g.hs != null; })) {
+                    b.appendChild(el('span', 'dot'));
+                }
+                b.addEventListener('click', function () { select(w); });
+                b.addEventListener('keydown', function (e) {
+                    var next = e.key === 'ArrowRight' ? w + 1 : e.key === 'ArrowLeft' ? w - 1 : 0;
+                    if (!next || next < 1 || next > 18) return;
+                    e.preventDefault();
+                    select(next);
+                    buttons[next - 1].focus();
+                });
+                tabs.appendChild(b);
+                buttons.push(b);
+            })(wk);
+        }
+
+        function select(wk) {
+            buttons.forEach(function (b, i) {
+                var on = i + 1 === wk;
+                b.setAttribute('aria-selected', on ? 'true' : 'false');
+                b.tabIndex = on ? 0 : -1;
+            });
+            document.getElementById('weekPanel').setAttribute('aria-labelledby', 'wk-tab-' + wk);
+            renderWeek(wk);
+            if (history.replaceState) history.replaceState(null, '', '#week-' + wk);
+        }
+
+        var start = DATA.currentWeek;
+        var m = /^#week-(\d+)$/.exec(location.hash);
+        if (m && +m[1] >= 1 && +m[1] <= 18) start = +m[1];
+        select(start);
+    }
+
+    /* ---- playoff picture ---- */
+    function renderPlayoffs() {
+        var wrap = document.getElementById('playoffPanels');
+
+        ['AFC', 'NFC'].forEach(function (conf) {
+            var panel = el('div', 'panel');
+            panel.appendChild(el('h3', null, conf + ' Playoff Seeding'));
+
+            var leaders = DIV_ORDER.map(function (div) {
+                return Object.keys(TEAMS).filter(function (t) {
+                    return TEAMS[t].c === conf && TEAMS[t].d === div;
+                }).sort(rank)[0];
+            }).sort(rank);
+
+            var rest = Object.keys(TEAMS).filter(function (t) {
+                return TEAMS[t].c === conf && leaders.indexOf(t) === -1;
+            }).sort(rank).slice(0, 3);
+
+            leaders.concat(rest).forEach(function (t, i) {
+                if (i === 4) {
+                    panel.appendChild(el('div', 'cut', 'Wild cards'));
+                }
+                var row = el('div', 'seed' + (i >= 4 ? ' wc' : ''));
+                row.appendChild(el('span', 'seed-number', (i + 1) + '.'));
+                var name = el('span');
+                name.appendChild(document.createTextNode(TEAMS[t].n));
+                name.appendChild(el('span', 'role',
+                    i < 4 ? TEAMS[t].c + ' ' + TEAMS[t].d + ' leader' : 'Wild card'));
+                row.appendChild(name);
+                row.appendChild(el('span', 'rec', recStr(t)));
+                panel.appendChild(row);
+            });
+
+            wrap.appendChild(panel);
+        });
+    }
+
+    function renderRecords() {
+        Array.prototype.forEach.call(
+            document.querySelectorAll('[data-record]'),
+            function (n) { n.textContent = recStr(n.getAttribute('data-record')); });
+    }
+
+    renderSeasonBar();
+    renderTabs();
+    renderPlayoffs();
+    renderRecords();
+})();
+</script>
 </body>
 </html>
